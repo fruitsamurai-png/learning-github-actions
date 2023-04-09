@@ -27,3 +27,10 @@ jobs:
     - name: Run tests
       run: |
         npm test
+        
+    - name: Upload npm debug log
+    if: failure()
+    uses: actions/upload-artifact@v2
+    with:
+      name: npm-debug-log
+      path: /home/runner/.npm/_logs/*-debug.log
